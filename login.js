@@ -7,7 +7,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     e.preventDefault()
     console.log(username.value)
     console.log(password.value)
-    const login = await fetch('http://127.0.0.1:8080/login', {
+    const login = await fetch('https://job-applying-manager.onrender.com/login', {
         method: 'POST',
         credentials: 'include',
         headers: {
