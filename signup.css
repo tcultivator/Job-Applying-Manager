@@ -16,7 +16,7 @@ body {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    gap: 6%;
+    
 
 }
 
@@ -47,7 +47,8 @@ body {
 }
 
 #usernameBody,
-#passwordBody {
+#passwordBody,
+#confirmpasswordBody {
     margin-bottom: 30px;
     display: flex;
     align-items: center;
@@ -88,7 +89,8 @@ body {
 }
 
 #usernameBody input,
-#passwordBody input {
+#passwordBody input,
+#confirmpasswordBody input {
     width: 100%;
     padding: 30px 30px;
     border-radius: 35px;
@@ -109,7 +111,8 @@ body {
 }
 
 #usernameBody label,
-#passwordBody label {
+#passwordBody label,
+#confirmpasswordBody label {
     position: absolute;
     margin-left: 30px;
     color: #696969;
@@ -120,8 +123,10 @@ body {
 
 #usernameBody input:focus~label,
 #passwordBody input:focus~label,
+#confirmpasswordBody input:focus~label,
 #usernameBody input:not(:placeholder-shown)~label,
-#passwordBody input:not(:placeholder-shown)~label {
+#passwordBody input:not(:placeholder-shown)~label,
+#confirmpasswordBody input:not(:placeholder-shown)~label {
     transform: translate(20px, -38px);
     background-color: #F9F5FF;
     font-size: 12px;
@@ -153,7 +158,7 @@ body {
 }
 
 .gotoLogin {
-    margin-top: 20px;
+    margin-top: 40px;
     text-align: center;
     align-items: center;
 }
