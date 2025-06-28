@@ -553,3 +553,35 @@ select {
     background-color: rgb(148, 148, 148);
     color: white;
 }
+
+#loadingBody {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.384);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#loading {
+    margin: auto;
+    width: 30px;
+    height: 30px;
+    background-color: none;
+    border: 6px dotted rgb(255, 255, 255);
+    border-radius: 50%;
+    border-bottom: 6px dotted transparent;
+    animation: loading 1s linear infinite;
+}
+
+
+@keyframes loading {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
