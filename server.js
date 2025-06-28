@@ -72,7 +72,7 @@ function authenticate(req, res, next) {
 app.post('/authenticate', authenticate, (req, res) => {
     const verifiedUserId = req.userId
     console.log('eto ung verfied na userId ', verifiedUserId)
-    const query = 'SELECT * FROM jobList WHERE Id = ?'
+    const query = 'SELECT * FROM JobList WHERE Id = ?'
     db.query(query, [verifiedUserId], (err, result) => {
         if (!result.length) {
             const data = result;
@@ -93,7 +93,7 @@ app.post('/addnewjob', authenticate, (req, res) => {
     const verifiedUserId = req.userId
     const userData = req.body;
     console.log(userData)
-    const query = 'INSERT INTO jobList (Id, CompanyName, Position, Status, date)VALUES(?,?,?,?,?)'
+    const query = 'INSERT INTO JobList (Id, CompanyName, Position, Status, date)VALUES(?,?,?,?,?)'
 
     db.query(query, [verifiedUserId, userData.camponyName,
         userData.position, userData.statuss, userData.date], (err, result) => {
@@ -112,7 +112,7 @@ app.put('/statusUpdate', authenticate, (req, res) => {
     const userData = req.body
     console.log(verifiedUserId)
     console.log(userData)
-    const query = 'UPDATE jobList SET Status =?  WHERE Id = ? && CompanyName = ? && Position = ?'
+    const query = 'UPDATE JobList SET Status =?  WHERE Id = ? && CompanyName = ? && Position = ?'
     db.query(query, [userData.statusUpdate,
         verifiedUserId, userData.companyName,
     userData.position], (err, result) => {
@@ -128,7 +128,7 @@ app.put('/statusUpdate', authenticate, (req, res) => {
 app.put('/dateUpdate', authenticate, (req, res) => {
     const verifiedUserId = req.userId
     const userDate = req.body
-    const query = 'UPDATE jobList SET date = ?  WHERE Id = ? && CompanyName = ? && Position = ?'
+    const query = 'UPDATE JobList SET date = ?  WHERE Id = ? && CompanyName = ? && Position = ?'
     db.query(query, [userDate.date, verifiedUserId,
     userDate.companyName, userDate.position], (err, result) => {
         if (err) {
@@ -157,7 +157,7 @@ app.post('/logout', authenticate, (req, res) => {
 app.post('/deleteItem', authenticate, (req, res) => {
     const verifiedUserId = req.userId
     const dataItem = req.body;
-    const query = 'DELETE FROM jobList WHERE Id = ? && CompanyName = ? && Position = ?'
+    const query = 'DELETE FROM JobList WHERE Id = ? && CompanyName = ? && Position = ?'
     db.query(query, [verifiedUserId, dataItem.CompanyName, dataItem.Position], (err, result) => {
         if (err) {
             res.status(404).json({ message: 'Error Deleting!' })
