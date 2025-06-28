@@ -601,3 +601,29 @@ select {
         transform: rotate(360deg);
     }
 }
+#notif{
+    background-color: #e63947e3;
+    color: white;
+    padding: 5px 20px;
+    border-radius: 15px;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    text-align: center;
+    animation: fade .2s ease-in-out alternate;
+}
+
+
+@keyframes fade {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
