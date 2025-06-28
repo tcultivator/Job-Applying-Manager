@@ -585,9 +585,9 @@ select {
     width: 30px;
     height: 30px;
     background-color: none;
-    border: 6px dotted rgb(255, 255, 255);
+    border: 6px solid rgb(255, 255, 255);
     border-radius: 50%;
-    border-bottom: 6px dotted transparent;
+    border-bottom: 6px solid transparent;
     animation: loading 1s linear infinite;
 }
 
