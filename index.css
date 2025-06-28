@@ -41,10 +41,11 @@ body {
     cursor: pointer;
     border: none;
     font-size: 12px;
+    -webkit-tap-highlight-color: transparent;
 }
 
 #navBar #islogin button {
-
+-webkit-tap-highlight-color: transparent;
     width: 80px;
     background-color: #FFFFFF;
     color: #3A3A3A;
@@ -76,6 +77,7 @@ body {
     border-radius: 10px;
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.356);
     color: #3a3a3a;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .listBodyContent:hover {
@@ -115,6 +117,7 @@ body {
     color: rgb(83, 83, 83);
     font-weight: bold;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 }
 
 
@@ -131,7 +134,7 @@ body {
 #listContent .rightSide button {
     background-color: rgb(218, 68, 68);
     border: none;
-
+-webkit-tap-highlight-color: transparent;
     width: 30px;
     height: 30px;
     color: #ffffff;
@@ -191,6 +194,7 @@ select {
     font-family: 'Righteous';
     font-weight: normal;
     margin: auto;
+    -webkit-tap-highlight-color: transparent;
 }
 
 #addModal div {
@@ -223,7 +227,7 @@ select {
 
 
 #addModal .modalBtn {
-
+-webkit-tap-highlight-color: transparent;
     width: 100%;
     display: flex;
     margin-bottom: 25px;
@@ -253,6 +257,7 @@ select {
     border-bottom-left-radius: 15px;
     border-top-right-radius: 25px;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 }
 
 
@@ -265,7 +270,7 @@ select {
     font-weight: bold;
     cursor: pointer;
     box-sizing: border-box;
-
+-webkit-tap-highlight-color: transparent;
 }
 
 #addModal .modalBtn button:first-child {
@@ -273,6 +278,7 @@ select {
     color: white;
     font-weight: bold;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 }
 
 #listContent {
@@ -366,6 +372,7 @@ select {
     font-size: 12px;
     cursor: pointer;
     text-align: center;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .content {
@@ -392,6 +399,7 @@ select {
     padding: 2px;
     background-color: none;
     border: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .statusContent div button {
@@ -403,6 +411,7 @@ select {
     color: white;
     font-weight: bold;
     border-radius: 5px;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .updateDate {
@@ -416,7 +425,7 @@ select {
     display: flex;
     align-items: center;
 
-
+-webkit-tap-highlight-color: transparent;
     display: flex;
     gap: 5px;
 }
@@ -429,6 +438,7 @@ select {
     font-size: 30px;
     align-items: center;
     text-align: center;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .updateDate .updateControl button {
@@ -440,6 +450,7 @@ select {
     color: white;
     font-weight: bold;
     border-radius: 5px;
+    -webkit-tap-highlight-color: transparent;
 }
 
 
@@ -543,16 +554,19 @@ select {
     border-radius: 10px;
     border: none;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .btnBody button:first-child{
     background-color: black;
     color: white;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .btnBody button:last-child{
     background-color: rgb(148, 148, 148);
     color: white;
+    -webkit-tap-highlight-color: transparent;
 }
 
 #loadingBody {
