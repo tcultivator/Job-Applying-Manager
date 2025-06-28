@@ -22,7 +22,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
         document.getElementById('message').textContent = data.message
         setTimeout(() => {
             document.getElementById('notifbody').style = `display:none`
-            window.location.replace('index.html')
+            window.location.replace('home.html')
         }, 1500);
 
     }
