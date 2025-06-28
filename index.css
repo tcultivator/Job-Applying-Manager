@@ -194,6 +194,7 @@ select {
     font-family: 'Righteous';
     font-weight: normal;
     margin: auto;
+    background-color: rgb(255, 255, 255);
     -webkit-tap-highlight-color: transparent;
 }
 
