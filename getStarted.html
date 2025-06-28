@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/2820820f6e.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <title>Job Applying Manager</title>
+    <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet'>
+</head>
+
+<body>
+    <div class="head">
+        <h2>Job Application Manager</h2>
+    </div>
+    <div class="bod">
+        <p>Job Application Manager is a simple app designed to help you keep track of your job applications with ease.
+            Easily log each application, update its status as things progress, and stay on top of important dates, all
+            in
+            one organized place. Whether you're applying to a few jobs or many, this app helps you stay focused and in
+            control of your job search.
+            Straightforward. Lightweight. Effective.</p>
+    </div>
+    <div class="foot">
+        <button onclick="window.location.replace('index.html')">Get Started</button>
+    </div>
+
+    <div id="move"></div>
+
+    <script>
+
+        const move = document.getElementById('move')
+        setInterval(() => {
+            const left = window.innerWidth - 100
+            const top = window.innerHeight - 100
+            const randomLeft = Math.random() * left;
+            const randomTop = Math.random() * top;
+            move.style.left = `${randomLeft}px`;
+            move.style.top = `${randomTop}px`;
+
+        }, 1000);
+
+    </script>
+
+
+
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            font-family: 'Righteous';
+            background-color: #F9F5FF;
+            overflow: hidden;
+            text-align: center;
+            justify-items: center;
+        }
+
+        #move {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: rgba(0, 0, 0, 0.24);
+            transition: 1s linear;
+            z-index: -1;
+            border-radius: 50%;
+        }
+
+        .head {
+
+            width: 300px;
+            position: absolute;
+            top: 18%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .bod {
+
+            width: 90%;
+            max-width: 500px;
+            position: absolute;
+            top: 37%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .foot {
+            position: absolute;
+            top: 80%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50%;
+
+            max-width: 300px;
+        }
+
+        .foot button {
+            width: 100%;
+            border-radius: 25px;
+            padding: 10px;
+            font-size: 15px;
+            font-weight: bold;
+            font-family: 'Righteous';
+            color: white;
+            background-color: black;
+            border: none;
+        }
+
+        h2 {
+            font-size: 40px;
+        }
+
+        p {
+            font-family: 'Times New Roman', Times, serif;
+            color: rgb(87, 87, 87);
+        }
+
+        @media (min-width:700px) {
+
+            .head {
+
+                width: 500px;
+                position: absolute;
+                top: 18%;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+             #move {
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            background-color: rgba(0, 0, 0, 0.24);
+            transition: 1s linear;
+            z-index: -1;
+            border-radius: 50%;
+        }
+
+            .bod {
+
+                width: 90%;
+                max-width: 800px;
+                position: absolute;
+                top: 37%;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 20px;
+            }
+
+            .foot {
+                position: absolute;
+                top: 80%;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 70%;
+
+                max-width: 300px;
+            }
+
+            .foot button {
+                width: 100%;
+                border-radius: 30px;
+                padding: 20px;
+                font-size: 18px;
+                font-weight: bold;
+                font-family: 'Righteous';
+                color: white;
+                background-color: black;
+                border: none;
+            }
+
+            h2 {
+                font-size: 60px;
+            }
+
+            p {
+                font-family: 'Times New Roman', Times, serif;
+                color: rgb(87, 87, 87);
+            }
+        }
+
+        @media (min-width:1600px) {
+
+            .head {
+
+                width: 700px;
+                position: absolute;
+                top: 15%;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+
+             #move {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            background-color: rgba(0, 0, 0, 0.24);
+            transition: 1s linear;
+            z-index: -1;
+            border-radius: 50%;
+        }
+
+            .bod {
+
+                width: 90%;
+                max-width: 800px;
+                position: absolute;
+                top: 39%;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 23px;
+            }
+
+            .foot {
+                position: absolute;
+                top: 80%;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 70%;
+
+                max-width: 300px;
+            }
+
+            .foot button {
+                width: 100%;
+                border-radius: 30px;
+                padding: 20px;
+                font-size: 18px;
+                font-weight: bold;
+                font-family: 'Righteous';
+                color: white;
+                background-color: black;
+                border: none;
+            }
+
+            h2 {
+                font-size: 80px;
+            }
+
+            p {
+                font-family: 'Times New Roman', Times, serif;
+                color: rgb(87, 87, 87);
+            }
+        }
+    </style>
+</body>
+
+</html>
