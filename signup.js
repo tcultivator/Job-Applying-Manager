@@ -4,7 +4,7 @@ const password = document.getElementById('password')
 
 document.getElementById('signupForm').addEventListener('submit', async (e) => {
     e.preventDefault()
-    const signup = await fetch('http://127.0.0.1:8080/signup', {
+    const signup = await fetch('https://job-applying-manager.onrender.com/signup', {
         method: 'POST',
         credentials: 'include',
         headers: {
