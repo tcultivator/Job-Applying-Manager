@@ -8,16 +8,17 @@ require('dotenv').config()
 const app = express()
 app.use(express.json())
 app.use(cors({
-    origin: 'http://127.0.0.1:5500',
+    origin: 'https://tcultivator.github.io',
     credentials: true
 }))
 app.use(cookieParser())
 
 const db = mysql.createConnection({
     host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
-    database: process.env.DB_DATABASE
+    database: process.env.DB_NAME
 })
 
 db.connect((err) => {
@@ -41,7 +42,7 @@ app.post('/login', (req, res) => {
 
             const acc = result[0]
             console.log(acc.id)
-            const token = jwt.sign({ userId: acc.id }, process.env.JSON_SECRET_KEY)
+            const token = jwt.sign({ userId: acc.id }, process.env.JWT_TOKEN_SECRET_KEY)
             res.cookie('token', token, {
                 httpOnly: true,
                 secure: true,
@@ -60,7 +61,7 @@ function authenticate(req, res, next) {
         res.status(401).json({ message: 'unauthorize user!' })
     }
     else {
-        const verifiedtoken = jwt.verify(token, process.env.JSON_SECRET_KEY)
+        const verifiedtoken = jwt.verify(token, process.env.JWT_TOKEN_SECRET_KEY)
         console.log(verifiedtoken)
         req.userId = verifiedtoken.userId;
         next()
