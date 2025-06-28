@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <script defer src="index.js"></script>
+    <script src="https://kit.fontawesome.com/2820820f6e.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <title>Job Applying Manager</title>
+    <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet'>
+</head>
+
+<body>
+    <nav id="navBar">
+        <div id="logo">
+            <h2>LOGO</h2>
+        </div>
+        <div id="account" style="display: none;">
+            <button onclick="window.location.replace('signup.html')">Signup</button>
+            <button onclick="window.location.replace('login.html')">Login</button>
+        </div>
+        <div id="islogin" style="display: none;">
+            <button onclick="delayLogout()">Logout</button>
+        </div>
+    </nav>
+
+    <div id="modalBody" style="display: none;">
+        <form id="addModal">
+
+            <div class="topHead">
+
+                <button class="closeBtn" type="button" onclick="closeAddnew()">X</button>
+            </div>
+            <label id="title">Add New</label>
+
+            <div>
+                <input type="text" id="company" required placeholder="">
+                <label for="company">Enter Company Name</label>
+            </div>
+            <div>
+                <input type="text" id="position" required placeholder="">
+                <label for="position">Enter Position</label>
+            </div>
+            <div>
+                <select name="" id="status">
+                    <option disabled selected>Status</option>
+                    <option class="status" data-status="Pending" value="Pending">Pending</option>
+                    <option class="status" data-status="Interview" value="Interview">Interview</option>
+                    <option class="status" data-status="Reject" value="Reject">Reject</option>
+                    <option class="status" data-status="Success" value="Success">Success</option>
+                </select>
+            </div>
+            <div>
+                <input type="date" id="date" required>
+            </div>
+            <div class="modalBtn">
+                <button type="submit">Submit</button>
+
+            </div>
+        </form>
+    </div>
+    <div id="list">
+        <div>
+            <h2>Job Applications</h2>
+        </div>
+        <div>
+            <button onclick="addNew()">Add</button>
+        </div>
+    </div>
+    <div class="listBody">
+
+
+        <div id="listContent">
+
+        </div>
+    </div>
+
+
+
+    <div id="userDataListBody" style="display: none;">
+        <div id="userDataList">
+            <div class="head">
+                <button id="xBtn" onclick="closeModal()">X</button>
+                <i class="fa-solid fa-circle-user"></i>
+                <span id="userCompanyName"></span>
+            </div>
+            <div class="content">
+                <p>Position : <span id="userPosition"></span></p>
+                <div class="statusContent">
+                    <label>Status : <span id="userStatus"></span></label>
+                    <div>
+                        <select id="updateStatus">
+                            <option disabled selected>Update</option>
+                            <option class="status" data-status="Pending" value="Pending">Pending</option>
+                            <option class="status" data-status="Interview" value="Interview">Interview</option>
+                            <option class="status" data-status="Reject" value="Reject">Reject</option>
+                            <option class="status" data-status="Success" value="Success">Success</option>
+                        </select>
+                        <button onclick="updateStatus()"><i class="fa-solid fa-check"></i></button>
+                    </div>
+
+                </div>
+                <div class="updateDate">
+                    <p>Date : <span id="userDate"></span></p>
+                    <div class="updateControl">
+                        <input type="date" name="" id="updatedDate">
+                        <button onclick="updateDate()"><i class="fa-solid fa-check"></i></button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="logoutModalBody" style="display: none;">
+        <div class="logoutModal">
+            <h2>Are Sure?</h2>
+            <div id="loadingBar"></div>
+            <div class="btnBody">
+                <button onclick="logout()">Confirm</button>
+                <button onclick="cancelLogout()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</body>
+
+
+
+</html>

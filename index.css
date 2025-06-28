@@ -1,0 +1,555 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Righteous';
+    background-color: #F9F5FF;
+    overflow: hidden;
+
+}
+
+#navBar {
+
+
+    width: 100%;
+    color: #001524;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-sizing: border-box;
+
+}
+
+#navBar h2 {
+    font-size: 32px;
+
+}
+
+#navBar #account {
+    display: flex;
+    gap: 5px;
+}
+
+#navBar #account button {
+    width: 80px;
+    background-color: #FFFFFF;
+    color: #3A3A3A;
+    font-weight: bold;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.295);
+    border-radius: 24px;
+    padding: 8px 15px;
+    cursor: pointer;
+    border: none;
+    font-size: 12px;
+}
+
+#navBar #islogin button {
+
+    width: 80px;
+    background-color: #FFFFFF;
+    color: #3A3A3A;
+    font-weight: bold;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.295);
+    border-radius: 24px;
+    padding: 8px 15px;
+    cursor: pointer;
+    border: none;
+    font-size: 12px;
+}
+
+
+
+.listBody {
+
+    align-items: center;
+    background-color: transparent;
+    border-radius: 10px;
+
+    margin: 0px 15px;
+}
+
+.listBodyContent {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    margin-top: 5px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.356);
+    color: #3a3a3a;
+}
+
+.listBodyContent:hover {
+    background-color: rgba(71, 157, 228, 0.075);
+}
+
+
+#listContent {
+    background-color: transparent;
+    max-height: 780px;
+    overflow: auto;
+
+}
+
+#list {
+    display: flex;
+    align-items: center;
+    background-color: black;
+    justify-content: space-between;
+    padding: 0px 10px;
+    border-radius: 10px;
+    color: white;
+    margin: 0 15px;
+}
+
+#list h2 {
+    font-size: 20px;
+    padding: 5px 0;
+    font-weight: normal;
+}
+
+#list button {
+    background-color: #FFFFFF;
+    border: none;
+    padding: 7px 25px;
+    border-radius: 24px;
+    color: rgb(83, 83, 83);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+#list button:hover {
+    background-color: rgb(226, 226, 226);
+
+}
+
+#listContent .rightSide {
+    background-color: transparent;
+
+}
+
+#listContent .rightSide button {
+    background-color: rgb(218, 68, 68);
+    border: none;
+
+    width: 30px;
+    height: 30px;
+    color: #ffffff;
+    cursor: pointer;
+    border-bottom-left-radius: 50%;
+    font-size: 15px;
+    border-top-right-radius: 10px;
+    text-align: center;
+
+}
+
+#listContent .rightSide button:hover {
+    color: #94181a;
+
+}
+
+#modalBody {
+    background-color: rgba(0, 0, 0, 0.349);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+
+}
+
+#addModal {
+    background-color: white;
+    border-radius: 25px;
+    padding: 10px;
+    margin: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: left;
+    width: 300px;
+    color: rgb(88, 88, 88);
+}
+
+#title {
+    color: rgb(88, 88, 88);
+    font-weight: 300;
+    font-size: 25px;
+
+}
+
+#addModal div input,
+select {
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 18px;
+    width: 100%;
+    box-sizing: border-box;
+    color: rgb(88, 88, 88);
+    font-family: 'Righteous';
+    font-weight: normal;
+    margin: auto;
+}
+
+#addModal div {
+    display: flex;
+    align-items: center;
+
+    padding: 0 20px;
+}
+
+#addModal div label {
+    position: absolute;
+    color: rgb(88, 88, 88);
+    margin-left: 10px;
+    font-size: 13px;
+    transition: .2s;
+    cursor: text;
+
+}
+
+#addModal div input:focus~label,
+#addModal div input:not(:placeholder-shown)~label {
+    transform: translate(10px, -29px);
+    background-color: white;
+    padding: 0px 5px;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    color: black;
+}
+
+
+
+#addModal .modalBtn {
+
+    width: 100%;
+    display: flex;
+    margin-bottom: 25px;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+
+
+#addModal .topHead {
+    display: flex;
+    width: 100%;
+    background-color: red;
+    box-sizing: border-box;
+    position: relative;
+}
+
+#addModal .topHead .closeBtn {
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background-color: black;
+    color: white;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 25px;
+    cursor: pointer;
+}
+
+
+
+#addModal .modalBtn button {
+    border-radius: 18px;
+    padding: 20px;
+    width: 100%;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    box-sizing: border-box;
+
+}
+
+#addModal .modalBtn button:first-child {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#listContent {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 0px;
+
+}
+
+#listContent .listRow {
+    display: flex;
+    background-color: transparent;
+    justify-content: space-between;
+    margin-top: 2px;
+    cursor: pointer;
+    padding: 0 10px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+
+
+
+#userDataListBody {
+    background-color: rgba(0, 0, 0, 0.363);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+#userDataList {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+
+    color: rgb(61, 61, 61);
+    border: none;
+
+}
+
+.head {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 10px;
+    padding-bottom: 5px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.212);
+}
+
+.head i {
+    text-align: center;
+    color: black;
+    font-size: 100px;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    width: auto;
+    padding: 20px;
+    border-radius: 10px;
+
+
+}
+
+.head #userCompanyName {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+#userDataList #xBtn {
+    background-color: rgb(218, 68, 68);
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 5px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size: 12px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.content {
+    font-size: 14px;
+}
+
+.statusContent {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+
+    align-items: center;
+}
+
+.statusContent div {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.statusContent div #updateStatus {
+    margin: 0;
+    padding: 2px;
+    background-color: none;
+    border: none;
+}
+
+.statusContent div button {
+    cursor: pointer;
+    padding: 7px 10px;
+    font-size: 12px;
+    border: none;
+    background-color: rgb(66, 226, 146);
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.updateDate {
+    display: flex;
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+.updateDate .updateControl {
+    display: flex;
+    align-items: center;
+
+
+    display: flex;
+    gap: 5px;
+}
+
+.updateDate .updateControl input {
+    width: 35px;
+    background-color: transparent;
+    color: black;
+    border: none;
+    font-size: 30px;
+    align-items: center;
+    text-align: center;
+}
+
+.updateDate .updateControl button {
+    cursor: pointer;
+    padding: 7px 10px;
+    font-size: 12px;
+    border: none;
+    background-color: rgb(66, 226, 146);
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+
+
+
+
+
+
+
+
+@media (max-width:500px) {
+
+    #listContent {
+        background-color: transparent;
+        max-height: 500px;
+        overflow: auto;
+
+    }
+}
+
+
+
+.status[data-status="Pending"] {
+    color: rgb(223, 175, 85);
+}
+
+.status[data-status="Success"] {
+    color: rgb(84, 226, 143);
+}
+
+.status[data-status="Reject"] {
+    color: rgb(214, 79, 79);
+}
+
+.status[data-status="Interview"] {
+    color: rgb(126, 177, 219);
+}
+
+
+
+#logoutModalBody {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.185);
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.logoutModal {
+    margin: auto;
+    width: 200px;
+    background-color: white;
+    align-items: center;
+    padding: 5px;
+    border-radius: 5px;
+    
+    display: flex;
+    flex-direction: column;
+}
+
+.logoutModal #loadingBar {
+    width: 180px;
+    height: 7px;
+    background-color: transparent;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.logoutModal #loadingBar::before {
+    content: "";
+    width: 0px;
+    height: 7px;
+    background-color: rgb(219, 71, 71);
+    border-radius: 5px;
+    position: absolute;
+      animation: loadingBar 5s linear;
+}
+
+@keyframes loadingBar {
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 180px;
+    }
+}
+
+.btnBody{
+    margin-top: 20px;
+    display: flex;
+    gap: 5px;
+    
+    width: 90%;
+}
+
+.btnBody button{
+    padding: 10px;
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.btnBody button:first-child{
+    background-color: black;
+    color: white;
+}
+
+.btnBody button:last-child{
+    background-color: rgb(148, 148, 148);
+    color: white;
+}

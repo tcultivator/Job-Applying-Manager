@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="signup.css">
+    <script defer src="signup.js"></script>
+    <script src="https://kit.fontawesome.com/2820820f6e.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <title>Signup</title>
+    <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet'>
+</head>
+
+<body>
+    <form id="signupForm">
+        <div class="signuphead">
+            <h2>Signup</h2>
+            <button onclick="window.location.replace('index.html')" type="button"><i
+                    class="fa-solid fa-arrow-left"></i></button>
+        </div>
+        <div id="usernameBody">
+            <input type="text" id="username" placeholder="" required>
+            <label for="username">Enter Username</label>
+            <div class="userIcon"><i class="fa-solid fa-user"></i></div>
+        </div>
+        <div id="passwordBody">
+            <input type="password" id="password" placeholder="" required>
+            <label for="password">Enter Password</label>
+            <div class="passIcon"><i class="fa-solid fa-lock"></i></div>
+        </div>
+
+        <div id="notifbody" style="display: none;">
+
+            <label id="message"></label>
+            <div class="loadingIcon"></div>
+        </div>
+        <div id="buttonBody">
+            <button type="submit">Submit</button>
+        </div>
+        <div class="gotoLogin">
+            <a href="login.html"><i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </form>
+
+
+
+  
+</body>
+
+</html>
