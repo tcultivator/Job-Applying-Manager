@@ -136,6 +136,10 @@ async function addtolist() {
     }
     else {
         console.log(data.message)
+         document.getElementById('notif').style=`display:flex`
+        setTimeout(() => {
+            document.getElementById('notif').style=`display:none`
+        }, 2000);
         document.getElementById('modalBody').style = `display:none`
     }
 
