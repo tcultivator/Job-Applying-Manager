@@ -4,6 +4,7 @@ let index1 = 0;
 let userDatalist = [];
 let newArr = [];
 (async () => {
+    document.getElementById('loadingBody').style=`display: flex;`
     const authenticate = await fetch('https://job-applying-manager.onrender.com/authenticate', {
         method: 'POST',
         credentials: 'include'
@@ -31,17 +32,20 @@ let newArr = [];
 
         document.getElementById('account').style = `display:none`
         document.getElementById('islogin').style = `display:flex`
+        document.getElementById('loadingBody').style=`display: none;`
     }
     else if (data.message == "No content available") {
         console.log('eto ngani')
         document.getElementById('account').style = `display:none`
         document.getElementById('islogin').style = `display:flex`
+        document.getElementById('loadingBody').style=`display: none;`
     }
 
     else {
         console.log(data.message)
         document.getElementById('account').style = `display:flex`
         document.getElementById('islogin').style = `display:none`
+        document.getElementById('loadingBody').style=`display: none;`
     }
 })();
 
