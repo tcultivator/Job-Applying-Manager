@@ -4,7 +4,7 @@ let index1 = 0;
 let userDatalist = [];
 let newArr = [];
 (async () => {
-    const authenticate = await fetch('http://127.0.0.1:8080/authenticate', {
+    const authenticate = await fetch('https://job-applying-manager.onrender.com/authenticate', {
         method: 'POST',
         credentials: 'include'
     })
@@ -92,7 +92,7 @@ document.getElementById('addModal').addEventListener('submit', (e) => {
 
 })
 async function addtolist() {
-    const addnewjob = await fetch('http://127.0.0.1:8080/addnewjob', {
+    const addnewjob = await fetch('https://job-applying-manager.onrender.com/addnewjob', {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -164,7 +164,7 @@ async function updateStatus() {
     console.log(userDatalist[selectedInList].Position)
     console.log(userDatalist[selectedInList].Status)
     console.log(userDatalist[selectedInList].date)
-    const sUpdate = await fetch('http://127.0.0.1:8080/statusUpdate', {
+    const sUpdate = await fetch('https://job-applying-manager.onrender.com/statusUpdate', {
         method: 'PUT',
         credentials: 'include',
         headers: {
@@ -212,7 +212,7 @@ async function updateStatus() {
 
 const updatedDate = document.getElementById('updatedDate')
 async function updateDate() {
-    const datUpdate = await fetch('http://127.0.0.1:8080/dateUpdate', {
+    const datUpdate = await fetch('https://job-applying-manager.onrender.com/dateUpdate', {
         method: 'PUT',
         credentials: 'include',
         headers: {
@@ -241,7 +241,7 @@ async function del(index) {
     console.log(userDatalist)
     console.log('eto ung idedelet mo ', userDatalist[index].CompanyName)
     console.log('eto ung idedelet mo ', userDatalist[index].Position)
-    const deleteList = await fetch('http://127.0.0.1:8080/deleteItem', {
+    const deleteList = await fetch('https://job-applying-manager.onrender.com/deleteItem', {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -265,7 +265,7 @@ async function del(index) {
 }
 
 async function logout() {
-    const logOut = await fetch('http://127.0.0.1:8080/logout', {
+    const logOut = await fetch('https://job-applying-manager.onrender.com/logout', {
         method: 'POST',
         credentials: 'include'
     })
