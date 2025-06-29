@@ -46,7 +46,7 @@ app.post('/login', (req, res) => {
             res.cookie('token', token, {
                 httpOnly: true,
                 secure: true,
-                sameSite: 'none'
+                sameSite: 'Lax'
 
             })
             res.status(200).json({ userId: acc.id, message: 'success Login' })
@@ -147,7 +147,7 @@ app.post('/logout', authenticate, (req, res) => {
     res.clearCookie('token', {
         httpOnly: true,
         secure: true,
-        sameSite: 'none'
+        sameSite: 'Lax'
     })
     res.status(200).json({ message: 'logout success!' })
 
