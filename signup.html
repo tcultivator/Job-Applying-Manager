@@ -4,8 +4,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="signup.css">
     <script defer src="signup.js"></script>
+    <style>
+        /* Shared reset & compact theme */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        :root {
+            --bg-1: #f5f7ff;
+            --bg-2: #eef2ff;
+            --accent: #6366f1;
+            --accent-2: #7c3aed;
+            --muted: #6b7280
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            font-family: Inter, 'Roboto', system-ui, -apple-system, 'Segoe UI', Roboto
+        }
+
+        body {
+            background: linear-gradient(180deg, var(--bg-1), var(--bg-2));
+            -webkit-font-smoothing: antialiased;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px
+        }
+
+        .auth-container {
+            width: 100%;
+            max-width: 520px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.85), #fff);
+            border-radius: 14px;
+            padding: 26px;
+            box-shadow: 0 18px 40px rgba(2, 6, 23, 0.06)
+        }
+
+        #signupForm {
+            display: flex;
+            flex-direction: column;
+            gap: 12px
+        }
+
+        #signupForm h2 {
+            font-size: 28px;
+            margin: 0
+        }
+
+        .signuphead {
+            display: flex;
+            align-items: center;
+            justify-content: space-between
+        }
+
+        .signuphead button {
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: transparent;
+            color: #696969;
+            cursor: pointer;
+            border-radius: 8px
+        }
+
+        .field {
+            position: relative
+        }
+
+        .field label {
+            display: block;
+            margin-bottom: 8px;
+            color: #6b7280;
+            font-size: 13px
+        }
+
+        /* right-side icon padding */
+        .field input {
+            width: 100%;
+            padding: 12px 60px 12px 14px;
+            border-radius: 10px;
+            border: 1px solid #e6e9ef;
+            background: #fff;
+            font-size: 15px
+        }
+
+        .field input:focus {
+            outline: none;
+            box-shadow: 0 6px 18px rgba(99, 102, 241, 0.06);
+            border-color: rgba(99, 102, 241, 0.18)
+        }
+
+        .icon {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+
+            width: 42px;
+            height: 42px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(180deg, rgba(99, 102, 241, 0.08), rgba(124, 58, 237, 0.06));
+            color: var(--accent-2);
+            font-size: 15px;
+            pointer-events: none
+        }
+
+        .form-foot .btn {
+            width: 100%;
+            padding: 14px 18px;
+            font-size: 1rem
+        }
+
+        #buttonBody button {
+            padding: 12px;
+            border-radius: 12px;
+            border: none;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            color: #fff;
+            font-weight: 700;
+            cursor: pointer
+        }
+
+        .form-foot .btn {
+            width: 100%
+        }
+
+        #notifbody {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+            border-radius: 20px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            color: #fff;
+            margin: 8px 0
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 12px;
+            border: 1px solid transparent;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform .12s ease, box-shadow .12s ease
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            color: #fff;
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.12)
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            color: #0f172a
+        }
+
+        .loadingIcon {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            border-bottom-color: transparent;
+            animation: rotate 1s linear infinite
+        }
+
+        @keyframes rotate {
+            to {
+                transform: rotate(360deg)
+            }
+        }
+    </style>
     <script src="https://kit.fontawesome.com/2820820f6e.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <title>Signup</title>
@@ -13,44 +196,47 @@
 </head>
 
 <body>
-    <form id="signupForm">
-        <div class="signuphead">
-            <h2>Signup</h2>
-            <button onclick="window.location.replace('home.html')" type="button"><i
-                    class="fa-solid fa-arrow-left"></i></button>
-        </div>
-        <div id="usernameBody">
-            <input type="text" id="username" placeholder="" required>
-            <label for="username">Enter Username</label>
-            <div class="userIcon"><i class="fa-solid fa-user"></i></div>
-        </div>
-        <div id="passwordBody">
-            <input type="password" id="password" placeholder="" required>
-            <label for="password">Enter Password</label>
-            <div class="passIcon"><i class="fa-solid fa-lock"></i></div>
-        </div>
-        <div id="confirmpasswordBody">
-            <input type="password" id="confirmpassword" placeholder="" required>
-            <label for="confirmpassword">Confirm Password</label>
-            <div class="passIcon"><i class="fa-solid fa-lock"></i></div>
-        </div>
+    <div class="auth-container">
+        <form id="signupForm">
+            <div class="signuphead">
+                <h2>Signup</h2>
+                <button onclick="window.location.replace('home.html')" type="button"><i
+                        class="fa-solid fa-arrow-left"></i></button>
+            </div>
+            <div class="field">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="" required>
+                <div class="icon userIcon"><i class="fa-solid fa-user"></i></div>
+            </div>
+            <div class="field">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="" required>
+                <div class="icon passIcon"><i class="fa-solid fa-lock"></i></div>
+            </div>
+            <div class="field">
+                <label for="confirmpassword">Confirm Password</label>
+                <input type="password" id="confirmpassword" placeholder="" required>
+                <div class="icon passIcon"><i class="fa-solid fa-lock"></i></div>
+            </div>
 
-        <div id="notifbody" style="display: none;">
+            <div id="notifbody" style="display: none;">
 
-            <label id="message"></label>
-            <div class="loadingIcon"></div>
-        </div>
-        <div id="buttonBody">
-            <button type="submit">Submit</button>
-        </div>
-        <div class="gotoLogin">
-            <a href="login.html"><i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-    </form>
+                <label id="message"></label>
+                <div class="loadingIcon"></div>
+            </div>
+            <div class="form-foot">
+                <div id="buttonBody">
+                    <button class="btn btn-primary" type="submit">Create Account</button>
+                </div>
+                <p style="margin-top:8px;text-align:center">Already have an account? <a href="login.html">Sign in</a>
+                </p>
+            </div>
+        </form>
+    </div>
 
 
 
-  
+
 </body>
 
 </html>

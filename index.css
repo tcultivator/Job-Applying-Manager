@@ -1,630 +1,381 @@
-body {
-    padding: 0;
-    margin: 0;
-    font-family: 'Righteous';
-    background-color: #F9F5FF;
-    overflow: hidden;
-
-}
-
-#navBar {
-
-
-    width: 100%;
-    color: #001524;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
+/* ---------- RESET ---------- */
+* {
     box-sizing: border-box;
-
+    margin: 0;
+    padding: 0;
 }
 
-#navBar h2 {
-    font-size: 32px;
-
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #f4f6fb;
+    color: #111827;
+    min-height: 100vh;
 }
 
-#navBar #account {
-    display: flex;
-    gap: 5px;
-}
-
-#navBar #account button {
-    width: 80px;
-    background-color: #FFFFFF;
-    color: #3A3A3A;
-    font-weight: bold;
-    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.295);
-    border-radius: 24px;
-    padding: 8px 15px;
-    cursor: pointer;
-    border: none;
-    font-size: 12px;
-    -webkit-tap-highlight-color: transparent;
-}
-
-#navBar #islogin button {
--webkit-tap-highlight-color: transparent;
-    width: 80px;
-    background-color: #FFFFFF;
-    color: #3A3A3A;
-    font-weight: bold;
-    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.295);
-    border-radius: 24px;
-    padding: 8px 15px;
-    cursor: pointer;
-    border: none;
-    font-size: 12px;
-}
-
-
-
-.listBody {
-
-    align-items: center;
-    background-color: transparent;
-    border-radius: 10px;
-
-    margin: 0px 15px;
-}
-
-.listBodyContent {
-    display: flex;
-    justify-content: space-between;
-    background-color: white;
-    margin-top: 5px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.356);
-    color: #3a3a3a;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.listBodyContent:hover {
-    background-color: rgba(71, 157, 228, 0.075);
-}
-
-
-#listContent {
-    background-color: transparent;
-    max-height: 780px;
-    overflow: auto;
-
-}
-
-#list {
+/* ---------- NAVBAR ---------- */
+#navBar {
+    height: 64px;
+    background: #ffffff;
     display: flex;
     align-items: center;
-    background-color: black;
     justify-content: space-between;
-    padding: 0px 10px;
-    border-radius: 10px;
+    padding: 0 24px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+#logo h2 {
+    font-family: 'Righteous', sans-serif;
+    font-size: 22px;
+}
+
+#account button,
+#islogin button {
+    background: #111827;
     color: white;
-    margin: 0 15px;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-left: 8px;
+}
+
+/* ---------- LIST HEADER ---------- */
+#list {
+    max-width: 1100px;
+    margin: 30px auto 10px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 #list h2 {
-    font-size: 20px;
-    padding: 5px 0;
-    font-weight: normal;
+    font-size: 26px;
+    font-family: 'Righteous', sans-serif;
 }
 
 #list button {
-    background-color: #FFFFFF;
-    border: none;
-    padding: 7px 25px;
-    border-radius: 24px;
-    color: rgb(83, 83, 83);
-    font-weight: bold;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-}
-
-
-#list button:hover {
-    background-color: rgb(226, 226, 226);
-
-}
-
-#listContent .rightSide {
-    background-color: transparent;
-
-}
-
-#listContent .rightSide button {
-    background-color: rgb(218, 68, 68);
-    border: none;
--webkit-tap-highlight-color: transparent;
-    width: 30px;
-    height: 30px;
-    color: #ffffff;
-    cursor: pointer;
-    border-bottom-left-radius: 50%;
-    font-size: 15px;
-    border-top-right-radius: 10px;
-    text-align: center;
-
-}
-
-#listContent .rightSide button:hover {
-    color: #94181a;
-
-}
-
-#modalBody {
-    background-color: rgba(0, 0, 0, 0.349);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-
-}
-
-#addModal {
-    background-color: white;
-    border-radius: 25px;
-    padding: 10px;
-    margin: auto;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    justify-content: left;
-    width: 300px;
-    color: rgb(88, 88, 88);
-}
-
-#title {
-    color: rgb(88, 88, 88);
-    font-weight: 300;
-    font-size: 25px;
-
-}
-
-#addModal div input,
-select {
-    border: 1px solid black;
-    padding: 20px;
-    border-radius: 18px;
-    width: 100%;
-    box-sizing: border-box;
-    color: rgb(88, 88, 88);
-    font-family: 'Righteous';
-    font-weight: normal;
-    margin: auto;
-    background-color: rgb(255, 255, 255);
-    -webkit-tap-highlight-color: transparent;
-}
-
-#addModal div {
-    display: flex;
-    align-items: center;
-
-    padding: 0 20px;
-}
-
-#addModal div label {
-    position: absolute;
-    color: rgb(88, 88, 88);
-    margin-left: 10px;
-    font-size: 13px;
-    transition: .2s;
-    cursor: text;
-
-}
-
-#addModal div input:focus~label,
-#addModal div input:not(:placeholder-shown)~label {
-    transform: translate(10px, -29px);
-    background-color: white;
-    padding: 0px 5px;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
-    color: black;
-}
-
-
-
-#addModal .modalBtn {
--webkit-tap-highlight-color: transparent;
-    width: 100%;
-    display: flex;
-    margin-bottom: 25px;
-    padding: 0 20px;
-    box-sizing: border-box;
-}
-
-
-
-#addModal .topHead {
-    display: flex;
-    width: 100%;
-    background-color: red;
-    box-sizing: border-box;
-    position: relative;
-}
-
-#addModal .topHead .closeBtn {
-    position: absolute;
-    right: -10px;
-    top: -10px;
-    width: 40px;
-    height: 40px;
-    border: none;
-    background-color: black;
+    background: #4f46e5;
     color: white;
-    border-bottom-left-radius: 15px;
-    border-top-right-radius: 25px;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-}
-
-
-
-#addModal .modalBtn button {
-    border-radius: 18px;
-    padding: 20px;
-    width: 100%;
     border: none;
+    padding: 10px 18px;
+    border-radius: 10px;
     font-weight: bold;
     cursor: pointer;
-    box-sizing: border-box;
--webkit-tap-highlight-color: transparent;
 }
 
-#addModal .modalBtn button:first-child {
-    background-color: black;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
+/* ---------- LIST BODY ---------- */
+.listBody {
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 20px 60px;
 }
 
 #listContent {
-    display: flex;
-    flex-direction: column;
-    padding: 0px 0px;
-
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 18px;
 }
 
-#listContent .listRow {
-    display: flex;
-    background-color: transparent;
-    justify-content: space-between;
-    margin-top: 2px;
+/* ---------- JOB CARD (generated in JS) ---------- */
+#listContent > div {
+    background: white;
+    padding: 18px;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
     cursor: pointer;
-    padding: 0 10px;
-    width: 100%;
-    border-radius: 10px;
-    -webkit-tap-highlight-color: transparent;
+    transition: transform .2s ease, box-shadow .2s ease;
 }
 
+#listContent > div:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+}
 
-
-
-#userDataListBody {
-    background-color: rgba(0, 0, 0, 0.363);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+/* ---------- MODAL BACKGROUND ---------- */
+#modalBody,
+#userDataListBody,
+#logoutModalBody,
+#loadingBody {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
     display: flex;
-}
-
-#userDataList {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 5px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 250px;
-
-    color: rgb(61, 61, 61);
-    border: none;
-
-}
-
-.head {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    margin-top: 10px;
-    padding-bottom: 5px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.212);
-}
-
-.head i {
-    text-align: center;
-    color: black;
-    font-size: 100px;
     align-items: center;
-    background-color: rgb(255, 255, 255);
-    width: auto;
-    padding: 20px;
-    border-radius: 10px;
-
-
+    justify-content: center;
+    z-index: 50;
 }
 
-.head #userCompanyName {
-    font-size: 25px;
-    font-weight: bold;
+/* ---------- ADD MODAL ---------- */
+#addModal {
+    width: 90%;
+    max-width: 420px;
+    background: white;
+    padding: 26px;
+    border-radius: 16px;
 }
 
-#userDataList #xBtn {
-    background-color: rgb(218, 68, 68);
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 30px;
-    height: 30px;
+.topHead {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.closeBtn {
+    background: none;
     border: none;
-    border-bottom-left-radius: 20px;
-    border-top-right-radius: 5px;
-    color: rgb(255, 255, 255);
-    font-weight: bold;
-    font-size: 12px;
+    font-size: 18px;
     cursor: pointer;
-    text-align: center;
-    -webkit-tap-highlight-color: transparent;
 }
 
-.content {
+#title {
+    font-family: 'Righteous', sans-serif;
+    font-size: 22px;
+    display: block;
+    margin-bottom: 20px;
+}
+
+/* Floating input style */
+#addModal div {
+    position: relative;
+    margin-bottom: 18px;
+}
+
+#addModal input,
+#addModal select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
     font-size: 14px;
 }
 
-.statusContent {
-    display: flex;
-    justify-content: space-between;
-    padding: 0;
-    margin: 0;
-
-    align-items: center;
-}
-
-.statusContent div {
-    display: flex;
-    gap: 4px;
-    align-items: center;
-}
-
-.statusContent div #updateStatus {
-    margin: 0;
-    padding: 2px;
-    background-color: none;
-    border: none;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.statusContent div button {
-    cursor: pointer;
-    padding: 7px 10px;
+#addModal label {
     font-size: 12px;
-    border: none;
-    background-color: rgb(66, 226, 146);
-    color: white;
-    font-weight: bold;
-    border-radius: 5px;
-    -webkit-tap-highlight-color: transparent;
+    color: #6b7280;
+    margin-top: 4px;
+    display: block;
 }
 
-.updateDate {
-    display: flex;
-    align-items: center;
-
-    justify-content: space-between;
-}
-
-.updateDate .updateControl {
-    display: flex;
-    align-items: center;
-
--webkit-tap-highlight-color: transparent;
-    display: flex;
-    gap: 5px;
-}
-
-.updateDate .updateControl input {
-    width: 35px;
-    background-color: transparent;
-    color: black;
-    border: none;
-    font-size: 30px;
-    align-items: center;
-    text-align: center;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.updateDate .updateControl button {
-    cursor: pointer;
-    padding: 7px 10px;
-    font-size: 12px;
-    border: none;
-    background-color: rgb(66, 226, 146);
-    color: white;
-    font-weight: bold;
-    border-radius: 5px;
-    -webkit-tap-highlight-color: transparent;
-}
-
-
-
-
-
-
-
-
-
-@media (max-width:500px) {
-
-    #listContent {
-        background-color: transparent;
-        max-height: 500px;
-        overflow: auto;
-
-    }
-}
-
-
-
-.status[data-status="Pending"] {
-    color: rgb(223, 175, 85);
-}
-
-.status[data-status="Success"] {
-    color: rgb(84, 226, 143);
-}
-
-.status[data-status="Reject"] {
-    color: rgb(214, 79, 79);
-}
-
-.status[data-status="Interview"] {
-    color: rgb(126, 177, 219);
-}
-
-
-
-#logoutModalBody {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.185);
+.modalBtn button {
     width: 100%;
-    height: 100%;
-    display: flex;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    background: #4f46e5;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-.logoutModal {
-    margin: auto;
-    width: 200px;
-    background-color: white;
-    align-items: center;
-    padding: 5px;
-    border-radius: 5px;
-    
-    display: flex;
-    flex-direction: column;
-}
-
-.logoutModal #loadingBar {
-    width: 180px;
-    height: 7px;
-    background-color: transparent;
-    border-radius: 5px;
-    border: 1px solid black;
-}
-
-.logoutModal #loadingBar::before {
-    content: "";
-    width: 0px;
-    height: 7px;
-    background-color: rgb(219, 71, 71);
-    border-radius: 5px;
-    position: absolute;
-      animation: loadingBar 5s linear;
-}
-
-@keyframes loadingBar {
-    0%{
-        width: 0;
-    }
-    100%{
-        width: 180px;
-    }
-}
-
-.btnBody{
-    margin-top: 20px;
-    display: flex;
-    gap: 5px;
-    
+/* ---------- USER DETAIL MODAL ---------- */
+#userDataList {
     width: 90%;
+    max-width: 420px;
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
 }
 
-.btnBody button{
+#userDataList .head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#xBtn {
+    margin-left: auto;
+    border: none;
+    background: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#userDataList i {
+    font-size: 30px;
+    color: #4f46e5;
+}
+
+.content p {
+    margin-bottom: 10px;
+}
+
+.statusContent,
+.updateDate {
+    margin-top: 16px;
+}
+
+.statusContent select,
+.updateControl input {
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+}
+
+.statusContent button,
+.updateControl button {
+    background: #4f46e5;
+    border: none;
+    color: white;
+    padding: 8px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* ---------- LOGOUT MODAL ---------- */
+.logoutModal {
+    width: 90%;
+    max-width: 360px;
+    background: white;
+    padding: 24px;
+    border-radius: 16px;
+    text-align: center;
+}
+
+.btnBody {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.btnBody button {
+    flex: 1;
     padding: 10px;
-    width: 100%;
     border-radius: 10px;
     border: none;
     cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
 }
 
-.btnBody button:first-child{
-    background-color: black;
+.btnBody button:first-child {
+    background: #dc2626;
     color: white;
-    -webkit-tap-highlight-color: transparent;
 }
 
-.btnBody button:last-child{
-    background-color: rgb(148, 148, 148);
+.btnBody button:last-child {
+    background: #e5e7eb;
+}
+
+/* ---------- NOTIFICATION ---------- */
+#notif {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #111827;
     color: white;
-    -webkit-tap-highlight-color: transparent;
-}
-
-#loadingBody {
+    padding: 14px 18px;
+    border-radius: 12px;
     display: flex;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.705);
-    backdrop-filter: blur(2px);
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-#loading {
-    margin: auto;
-    width: 30px;
-    height: 30px;
-    background-color: none;
-    border: 6px solid rgb(255, 255, 255);
-    border-radius: 50%;
-    border-bottom: 6px solid transparent;
-    animation: loading 1s linear infinite;
-}
-
-
-@keyframes loading {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
-#notif{
-    background-color: #e63947e3;
-    color: white;
-    padding: 5px 20px;
-    border-radius: 15px;
-    position: absolute;
-    display: flex;
-    justify-content: space-between;
     align-items: center;
-    top: 5px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px;
-    text-align: center;
-    animation: fade .2s ease-in-out alternate;
+    gap: 10px;
+    z-index: 100;
 }
 
+/* ---------- LOADING ---------- */
+#loading {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #e5e7eb;
+    border-top: 5px solid #4f46e5;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
 
-@keyframes fade {
-    0%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 1;
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 600px) {
+    #list h2 {
+        font-size: 22px;
     }
 }
+
+/* ---------------- Shared Theme (from landing + home) ---------------- */
+:root{
+    --bg-1:#f5f7ff;
+    --bg-2:#eef2ff;
+    --accent:#6366f1;
+    --accent-2:#7c3aed;
+    --muted:#6b7280;
+    --card:#ffffff;
+    --glass:rgba(255,255,255,0.6);
+}
+
+html,body{height:100%;margin:0;font-family:Inter, 'Roboto', system-ui, -apple-system,'Segoe UI',Roboto}
+body{background:linear-gradient(180deg,var(--bg-1),var(--bg-2));-webkit-font-smoothing:antialiased;color:#0f172a}
+
+/* Landing / Hero */
+.landing-header{position:absolute;top:20px;left:24px}
+.logo{font-family:'Righteous',sans-serif;font-size:20px;color:var(--accent-2)}
+
+.hero{width:100%;max-width:1200px;padding:12px}
+.hero-inner{display:grid;grid-template-columns:1fr;gap:22px;align-items:center}
+.left{padding:28px;border-radius:16px}
+.left h1{font-size:clamp(1.8rem,5vw,3rem);margin:0 0 12px;line-height:1.05}
+.lead{color:var(--muted);font-size:1.05rem;margin-bottom:18px}
+
+.cta-row{display:flex;gap:12px;flex-wrap:wrap}
+.primary-cta{background:linear-gradient(90deg,var(--accent),#8b5cf6);color:white;border:none;padding:14px 20px;border-radius:12px;font-weight:700;cursor:pointer;box-shadow:0 12px 30px rgba(99,102,241,0.18);transition:transform .18s ease}
+.primary-cta:hover{transform:translateY(-4px)}
+.ghost-cta{background:transparent;border:1px solid rgba(15,23,42,0.08);padding:12px 16px;border-radius:12px;cursor:pointer}
+
+.features{display:flex;gap:18px;margin-top:18px;list-style:none;padding:0;color:var(--muted)}
+.features li{display:flex;align-items:center;gap:8px}
+.features i{color:var(--accent)}
+
+.right{display:flex;align-items:center;justify-content:center}
+.showcase{width:320px;background:linear-gradient(180deg,rgba(255,255,255,0.9),white);border-radius:14px;padding:14px;box-shadow:0 12px 30px rgba(2,6,23,0.06)}
+.show-top{display:flex;gap:8px;padding-bottom:8px}
+.dot{width:10px;height:10px;border-radius:50%}
+.mock-list{display:flex;flex-direction:column;gap:8px}
+.mock-row{display:flex;justify-content:space-between;padding:10px;border-radius:10px;background:#fafafa;border:1px solid #f3f4f6}
+.pill{font-size:0.85rem;padding:6px 8px;border-radius:999px;background:#f3f4f6;color:var(--muted)}
+.pill.success{background:linear-gradient(90deg,#f0fdfa,#bbf7d0);color:#065f46}
+.pill.muted{background:#fff5f5;color:#7f1d1d}
+
+/* subtle movement for the accent */
+#move{position:absolute;width:320px;height:320px;background:var(--accent);opacity:0.08;border-radius:40%;transition:1s ease-in-out;z-index:-1;filter:blur(18px);transform:translate3d(0,0,0)}
+
+@media(min-width:900px){
+    .hero-inner{grid-template-columns:1fr 380px}
+}
+
+@media(max-width:520px){
+    .showcase{width:100%}
+    .right{display:none}
+}
+
+/* home-specific UI (cards, modal refinements) */
+#navBar{height:72px;background:transparent;display:flex;align-items:center;justify-content:space-between;padding:0 20px;position:sticky;top:0}
+#logo h2{font-family:'Righteous',sans-serif;font-size:20px;color:var(--accent-2);margin:0}
+#account button,#islogin button{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;border:none;padding:10px 14px;border-radius:10px;cursor:pointer;font-weight:600}
+.app-wrap{width:100%;max-width:1200px;margin:18px auto;padding:18px;display:grid;grid-template-columns:1fr;gap:18px}
+#list{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:6px 0}
+#list h2{font-family:'Righteous',sans-serif;font-size:22px;margin:0;color:#0b1220}
+#list button{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;border:none;padding:10px 14px;border-radius:10px;cursor:pointer}
+.listBody{background:transparent;padding:6px}
+#listContent{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+#listContent > .listBodyContent{background:var(--card);padding:14px;border-radius:12px;box-shadow:0 8px 20px rgba(2,6,23,0.06);display:flex;align-items:center;justify-content:space-between;gap:10px;transition:transform .18s ease}
+#listContent > .listBodyContent:hover{transform:translateY(-6px)}
+.listRow{display:flex;flex-direction:column;gap:6px;cursor:pointer}
+.listRow p{margin:0;font-weight:600}
+.listBodyContent .status{font-weight:600;color:var(--muted);font-size:0.9rem}
+.rightSide button{background:transparent;border-radius:8px;border:none;color:#ef4444;cursor:pointer;padding:6px}
+
+#modalBody,#userDataListBody,#logoutModalBody,#loadingBody{backdrop-filter:blur(4px)}
+#addModal,#userDataList,.logoutModal{border-radius:14px;background:linear-gradient(180deg,var(--glass),white);box-shadow:0 18px 40px rgba(2,6,23,0.08);padding:20px}
+#addModal input,#addModal select{padding:12px;border-radius:10px;border:1px solid #e6e9ef}
+#addModal label{font-size:13px;color:var(--muted)}
+.modalBtn button{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;border:none;padding:12px;border-radius:12px;width:100%;font-weight:700}
+
+#userDataList .head{display:flex;align-items:center;gap:12px}
+#userDataList i{font-size:30px;color:var(--accent)}
+#userDataList .content p{color:#0b1220}
+.statusContent select,.updateControl input{padding:8px;border-radius:8px;border:1px solid #e6e9ef}
+.statusContent button,.updateControl button{background:var(--accent-2);border:none;color:white;padding:8px 10px;border-radius:8px}
+
+#notif{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;padding:12px 16px;border-radius:12px}
+
+@media(min-width:900px){.app-wrap{grid-template-columns:1fr}}
+@media(max-width:520px){#navBar{padding:0 12px}#list h2{font-size:18px}#listContent{grid-template-columns:1fr}}

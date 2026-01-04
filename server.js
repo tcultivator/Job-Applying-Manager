@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken')
 const cookieParser = require('cookie-parser')
 require('dotenv').config()
 
+
 const app = express()
 app.use(express.json())
 app.use(cors({
@@ -31,9 +32,10 @@ db.connect((err) => {
 })
 
 
+
 app.post('/login', (req, res) => {
     const data = req.body
-    const query = 'SELECT * FROM accounts WHERE username = ? && password = ? '
+    const query = 'SELECT * FROM jaAccounts WHERE username = ? && password = ? '
     db.query(query, [data.username, data.password], (err, result) => {
         if (!result.length) {
             res.status(404).json({ message: 'error login' })
@@ -176,7 +178,7 @@ app.post('/deleteItem', authenticate, (req, res) => {
 
 app.post('/signup', (req, res) => {
     const userData = req.body
-    const query = 'INSERT INTO accounts (username,password) VALUES (?,?)'
+    const query = 'INSERT INTO jaAccounts (username,password) VALUES (?,?)'
     db.query(query, [userData.username, userData.password], (err, result) => {
         if (err) {
             res.status(401).json({ message: 'Error Signup' })
