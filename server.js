@@ -35,7 +35,7 @@ db.connect((err) => {
 
 app.post('/login', (req, res) => {
     const data = req.body
-    const query = 'SELECT * FROM jaAccounts WHERE username = ? && password = ? '
+    const query = 'SELECT * FROM jaaccounts WHERE username = ? && password = ? '
     db.query(query, [data.username, data.password], (err, result) => {
         if (!result.length) {
             res.status(404).json({ message: 'error login' })
@@ -74,7 +74,7 @@ function authenticate(req, res, next) {
 app.post('/authenticate', authenticate, (req, res) => {
     const verifiedUserId = req.userId
     console.log('eto ung verfied na userId ', verifiedUserId)
-    const query = 'SELECT * FROM JobList WHERE Id = ?'
+    const query = 'SELECT * FROM joblist WHERE Id = ?'
     db.query(query, [verifiedUserId], (err, result) => {
         if (!result.length) {
             const data = result;
@@ -95,7 +95,7 @@ app.post('/addnewjob', authenticate, (req, res) => {
     const verifiedUserId = req.userId
     const userData = req.body;
     console.log(userData)
-    const query = 'INSERT INTO JobList (Id, CompanyName, Position, Status, date)VALUES(?,?,?,?,?)'
+    const query = 'INSERT INTO joblist (Id, CompanyName, Position, Status, date)VALUES(?,?,?,?,?)'
 
     db.query(query, [verifiedUserId, userData.camponyName,
         userData.position, userData.statuss, userData.date], (err, result) => {
@@ -114,7 +114,7 @@ app.put('/statusUpdate', authenticate, (req, res) => {
     const userData = req.body
     console.log(verifiedUserId)
     console.log(userData)
-    const query = 'UPDATE JobList SET Status =?  WHERE Id = ? && CompanyName = ? && Position = ?'
+    const query = 'UPDATE joblist SET Status =?  WHERE Id = ? && CompanyName = ? && Position = ?'
     db.query(query, [userData.statusUpdate,
         verifiedUserId, userData.companyName,
     userData.position], (err, result) => {
@@ -130,7 +130,7 @@ app.put('/statusUpdate', authenticate, (req, res) => {
 app.put('/dateUpdate', authenticate, (req, res) => {
     const verifiedUserId = req.userId
     const userDate = req.body
-    const query = 'UPDATE JobList SET date = ?  WHERE Id = ? && CompanyName = ? && Position = ?'
+    const query = 'UPDATE joblist SET date = ?  WHERE Id = ? && CompanyName = ? && Position = ?'
     db.query(query, [userDate.date, verifiedUserId,
     userDate.companyName, userDate.position], (err, result) => {
         if (err) {
@@ -159,7 +159,7 @@ app.post('/logout', authenticate, (req, res) => {
 app.post('/deleteItem', authenticate, (req, res) => {
     const verifiedUserId = req.userId
     const dataItem = req.body;
-    const query = 'DELETE FROM JobList WHERE Id = ? && CompanyName = ? && Position = ?'
+    const query = 'DELETE FROM joblist WHERE Id = ? && CompanyName = ? && Position = ?'
     db.query(query, [verifiedUserId, dataItem.CompanyName, dataItem.Position], (err, result) => {
         if (err) {
             res.status(404).json({ message: 'Error Deleting!' })
@@ -178,7 +178,7 @@ app.post('/deleteItem', authenticate, (req, res) => {
 
 app.post('/signup', (req, res) => {
     const userData = req.body
-    const query = 'INSERT INTO jaAccounts (username,password) VALUES (?,?)'
+    const query = 'INSERT INTO jaaccounts (username,password) VALUES (?,?)'
     db.query(query, [userData.username, userData.password], (err, result) => {
         if (err) {
             res.status(401).json({ message: 'Error Signup' })
@@ -191,3 +191,4 @@ app.post('/signup', (req, res) => {
 app.listen(8080, () => {
     console.log('server is running!')
 })
+
