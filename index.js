@@ -4,7 +4,7 @@ let index1 = 0;
 let userDatalist = [];
 let newArr = [];
 (async () => {
-    document.getElementById('loadingBody').style=`display: flex;`
+    document.getElementById('loadingBody').style = `display: flex;`
     const authenticate = await fetch('https://job-applying-manager.onrender.com/authenticate', {
         method: 'POST',
         credentials: 'include'
@@ -29,29 +29,30 @@ let newArr = [];
         });
 
         console.log(newArr)
-
+        document.getElementById('appCount').innerHTML = userDatalist.length;
         document.getElementById('account').style = `display:none`
         document.getElementById('islogin').style = `display:flex`
-        document.getElementById('loadingBody').style=`display: none;`
+        document.getElementById('loadingBody').style = `display: none;`
     }
     else if (data.message == "No content available") {
         console.log('eto ngani')
         document.getElementById('account').style = `display:none`
         document.getElementById('islogin').style = `display:flex`
-        document.getElementById('loadingBody').style=`display: none;`
+        document.getElementById('loadingBody').style = `display: none;`
     }
 
     else {
         console.log(data.message)
         document.getElementById('account').style = `display:flex`
         document.getElementById('islogin').style = `display:none`
-        document.getElementById('loadingBody').style=`display: none;`
+        document.getElementById('loadingBody').style = `display: none;`
     }
 })();
 
 
 function displayJobList() {
     console.log(userDatalist[index].CompanyName)
+    console.log(userDatalist.length)
     console.log(index)
     newArr.push(`
         <div class="listBodyContent">
@@ -65,6 +66,7 @@ function displayJobList() {
         </div>
             `)
     document.getElementById('listContent').innerHTML += newArr[index1++]
+    document.getElementById('appCount').innerHTML = userDatalist.length;
 
 
 }
@@ -111,11 +113,11 @@ async function addtolist() {
     const data = await addnewjob.json()
     if (addnewjob.ok) {
         let newStatus;
-        console.log(data.message)
+
         if (statuss.value == "") {
             console.log('eto ung sa if else ng status')
             newStatus = 'Not Set'
-            console.log(newStatus)
+
         }
         else {
             newStatus = statuss.value
@@ -125,20 +127,20 @@ async function addtolist() {
             CompanyName: camponyName.value, Position: position.value,
             Status: newStatus, date: date.value
         })
-        console.log(userDatalist)
+
         displayJobList()
         camponyName.value = ''
         position.value = ''
         statuss.value = 'Status'
         date.value = ''
-        console.log('nag success????')
+
         document.getElementById('modalBody').style = `display:none`
     }
     else {
         console.log(data.message)
-         document.getElementById('notif').style=`display:flex`
+        document.getElementById('notif').style = `display:flex`
         setTimeout(() => {
-            document.getElementById('notif').style=`display:none`
+            document.getElementById('notif').style = `display:none`
         }, 2000);
         document.getElementById('modalBody').style = `display:none`
     }
@@ -264,6 +266,7 @@ async function del(index) {
     if (deleteList.ok) {
         newArr[index] = ""
         document.getElementById('listContent').innerHTML = newArr.join("")
+        document.getElementById('appCount').innerHTML = userDatalist.length - 1;
         console.log(data.message)
     }
     else {
@@ -310,7 +313,7 @@ function delayLogout() {
 
 }
 
-function cancelLogout(){
+function cancelLogout() {
     clearInterval(loadingInterval)
     document.getElementById('logoutModalBody').style = `display:none`
 }

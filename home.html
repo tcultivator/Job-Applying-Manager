@@ -4,12 +4,436 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
+    <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet'>
+    <style>
+        /* Shared reset & theme */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        :root {
+            --bg-1: #f5f7ff;
+            --bg-2: #eef2ff;
+            --accent: #6366f1;
+            --accent-2: #7c3aed;
+            --muted: #6b7280;
+            --card: #ffffff;
+            --glass: rgba(255, 255, 255, 0.6)
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            font-family: Inter, 'Roboto', system-ui, -apple-system, 'Segoe UI', Roboto
+        }
+
+        body {
+            background: linear-gradient(180deg, var(--bg-1), var(--bg-2));
+            -webkit-font-smoothing: antialiased;
+            color: #0f172a;
+            min-height: 100vh;
+            padding-top: 86px
+        }
+
+        /* Nav & app layout */
+        #navBar {
+            height: 72px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(6px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            position: fixed;
+            top: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 1200px;
+            z-index: 20
+        }
+
+        #logo h2 {
+            font-family: 'Righteous', sans-serif;
+            font-size: 20px;
+            color: var(--accent-2);
+            margin: 0
+        }
+        #account{
+            display: flex;
+            gap: 5px;
+        }
+
+        /* Button system */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 18px;
+            border-radius: 12px;
+            border: 1px solid transparent;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform .12s ease, box-shadow .12s ease;
+            font-size: 0.96rem
+        }
+
+        .btn:hover {
+            transform: translateY(-2px)
+        }
+
+        .btn:focus {
+            outline: 3px solid rgba(99, 102, 241, 0.14);
+            outline-offset: 2px
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            color: #fff;
+            box-shadow: 0 14px 40px rgba(99, 102, 241, 0.12)
+        }
+
+        .btn-primary:active {
+            transform: translateY(0)
+        }
+
+        .btn-secondary {
+            background: #fff;
+            border: 1px solid #e6e9ef;
+            color: #0f172a
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            color: #0f172a
+        }
+
+        .btn-sm {
+            padding: 6px 10px;
+            border-radius: 10px;
+            font-size: 0.9rem
+        }
+
+        .app-wrap {
+            width: 100%;
+            max-width: 1200px;
+            margin: 24px auto;
+            padding: 18px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 18px
+        }
+
+        /* dashboard header */
+        .dashboardHeader {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 14px;
+            background: linear-gradient(180deg, #fff, rgba(255, 255, 255, 0.9));
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(2, 6, 23, 0.04)
+        }
+
+        .dashboardHeader .welcome h3 {
+            margin: 0;
+            font-size: 1.15rem
+        }
+
+        .dashboardHeader .welcome p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.95rem
+        }
+
+        .stats {
+            display: flex;
+            gap: 12px;
+            align-items: center
+        }
+
+        .stat {
+            background: var(--card);
+            padding: 10px 14px;
+            border-radius: 10px;
+            box-shadow: 0 6px 16px rgba(2, 6, 23, 0.04);
+            text-align: center
+        }
+
+        .stat .stat-value {
+            font-weight: 800;
+            font-size: 1.15rem
+        }
+
+        .stat .stat-label {
+            color: var(--muted);
+            font-size: 0.85rem
+        }
+
+        /* list */
+        #list {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 6px 0
+        }
+
+        #list h2 {
+            font-family: 'Righteous', sans-serif;
+            font-size: 22px;
+            margin: 0;
+            color: #0b1220
+        }
+
+        #list .sub {
+            color: var(--muted);
+            font-size: 0.95rem;
+            margin-top: 6px
+        }
+
+        #list button {
+            padding: 10px 14px
+        }
+
+        .listBody {
+            background: transparent;
+            padding: 6px
+        }
+
+        #listContent {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 18px
+        }
+
+        #listContent:empty::before {
+            content: 'No applications yet — click Add to get started';
+            display: block;
+            text-align: center;
+            color: var(--muted);
+            padding: 48px 12px;
+            border-radius: 12px;
+            background: linear-gradient(180deg, #fff, #f9fafb);
+            box-shadow: 0 8px 24px rgba(2, 6, 23, 0.03)
+        }
+
+        #listContent>.listBodyContent {
+            background: var(--card);
+            padding: 18px;
+            border-radius: 14px;
+            box-shadow: 0 12px 30px rgba(2, 6, 23, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            transition: transform .18s ease
+        }
+
+        #listContent>.listBodyContent:hover {
+            transform: translateY(-6px)
+        }
+
+        .listRow {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer
+        }
+
+        .listRow p {
+            margin: 0;
+            font-weight: 700
+        }
+
+        .listBodyContent .status {
+            font-weight: 700;
+            color: var(--muted);
+            font-size: 0.95rem
+        }
+
+        .rightSide button {
+            background: transparent;
+            border-radius: 8px;
+            border: none;
+            color: #ef4444;
+            cursor: pointer;
+            padding: 6px
+        }
+
+        /* modals */
+        #modalBody,
+        #userDataListBody,
+        #logoutModalBody,
+        #loadingBody {
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background: rgba(2, 6, 23, 0.35);
+            z-index: 50
+        }
+
+        #addModal,
+        #userDataList,
+        .logoutModal {
+            max-width: 520px;
+            width: 100%;
+            border-radius: 14px;
+            background: linear-gradient(180deg, var(--glass), #fff);
+            box-shadow: 0 18px 40px rgba(2, 6, 23, 0.08);
+            padding: 22px
+        }
+
+        #addModal .topHead {
+            display: flex;
+            justify-content: flex-end
+        }
+
+        .closeBtn {
+            background: transparent;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            padding: 6px;
+            border-radius: 8px
+        }
+
+        #addModal input,
+        #addModal select {
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #e6e9ef;
+            width: 100%;
+            margin-top: 8px
+        }
+
+        #addModal label {
+            font-size: 13px;
+            color: var(--muted);
+            display: block;
+            margin-top: 12px
+        }
+
+        .modalBtn {
+            margin-top: 14px
+        }
+
+        .modalBtn .btn {
+            width: 100%
+        }
+
+        /* user details */
+        #userDataList .head {
+            display: flex;
+            align-items: center;
+            gap: 12px
+        }
+
+        #userDataList i {
+            font-size: 30px;
+            color: var(--accent)
+        }
+
+        #userDataList .content p {
+            color: #0b1220
+        }
+
+        .statusContent select,
+        .updateControl input {
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid #e6e9ef
+        }
+
+        .statusContent button,
+        .updateControl button {
+            background: var(--accent-2);
+            border: none;
+            color: white;
+            padding: 8px 10px;
+            border-radius: 8px
+        }
+
+        /* notify & loading */
+        #notif {
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            color: white;
+            padding: 12px 16px;
+            border-radius: 12px
+        }
+
+        #loading {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #e5e7eb;
+            border-top: 5px solid var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+        /* responsive */
+        @media(min-width:900px) {
+            .app-wrap {
+                grid-template-columns: 1fr
+            }
+        }
+
+        @media(max-width:720px) {
+            .dashboardHeader {
+                flex-direction: column;
+                align-items: flex-start
+            }
+
+            .stats {
+                width: 100%;
+                justify-content: flex-start
+            }
+
+            .stat {
+                padding: 10px
+            }
+        }
+
+        @media(max-width:520px) {
+            #navBar {
+                padding: 0 12px
+            }
+
+            #list h2 {
+                font-size: 18px
+            }
+
+            #listContent {
+                grid-template-columns: 1fr;
+                padding: 0 8px
+            }
+
+            .modalBtn .btn {
+                padding: 12px
+            }
+        }
+    </style>
     <script defer src="index.js"></script>
     <script src="https://kit.fontawesome.com/2820820f6e.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <title>Job Applying Manager</title>
     <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet'>
+    <!-- theme styles moved to index.css -->
 </head>
 
 <body>
@@ -18,64 +442,78 @@
             <h2>LOGO</h2>
         </div>
         <div id="account" style="display: none;">
-            <button onclick="window.location.replace('signup.html')">Signup</button>
-            <button onclick="window.location.replace('login.html')">Login</button>
+            <button class="btn btn-outline" onclick="window.location.replace('signup.html')">Signup</button>
+            <button class="btn btn-outline" onclick="window.location.replace('login.html')">Login</button>
         </div>
         <div id="islogin" style="display: none;">
-            <button onclick="delayLogout()">Logout</button>
+            <button class="btn btn-primary" onclick="delayLogout()">Logout</button>
         </div>
     </nav>
 
-    <div id="modalBody" style="display: none;">
-        <form id="addModal">
+    <div class="app-wrap">
 
-            <div class="topHead">
+        <div id="modalBody" style="display: none;">
+            <form id="addModal">
 
-                <button class="closeBtn" type="button" onclick="closeAddnew()">X</button>
-            </div>
-            <label id="title">Add New</label>
+                <div class="topHead">
 
-            <div>
-                <input type="text" id="company" required placeholder="">
-                <label for="company">Enter Company Name</label>
-            </div>
-            <div>
-                <input type="text" id="position" required placeholder="">
-                <label for="position">Enter Position</label>
-            </div>
-            <div>
-                <select name="" id="status">
-                    <option disabled selected>Status</option>
-                    <option class="status" data-status="Pending" value="Pending">Pending</option>
-                    <option class="status" data-status="Interview" value="Interview">Interview</option>
-                    <option class="status" data-status="Reject" value="Reject">Reject</option>
-                    <option class="status" data-status="Success" value="Success">Success</option>
-                </select>
-            </div>
-            <div>
-                <input type="date" id="date" required>
-                <label for="date">Select Date</label>
-            </div>
-            <div class="modalBtn">
-                <button type="submit">Submit</button>
+                    <button class="closeBtn" type="button" onclick="closeAddnew()">X</button>
+                </div>
+                <label id="title">Add New</label>
 
-            </div>
-        </form>
-    </div>
-    <div id="list">
-        <div>
-            <h2>Job Applications</h2>
+                <div>
+                    <input type="text" id="company" required placeholder="">
+                    <label for="company">Enter Company Name</label>
+                </div>
+                <div>
+                    <input type="text" id="position" required placeholder="">
+                    <label for="position">Enter Position</label>
+                </div>
+                <div>
+                    <select name="" id="status">
+                        <option disabled selected>Status</option>
+                        <option class="status" data-status="Pending" value="Pending">Pending</option>
+                        <option class="status" data-status="Interview" value="Interview">Interview</option>
+                        <option class="status" data-status="Reject" value="Reject">Reject</option>
+                        <option class="status" data-status="Success" value="Success">Success</option>
+                    </select>
+                </div>
+                <div>
+                    <input type="date" id="date" required>
+                    <label for="date">Select Date</label>
+                </div>
+                <div class="modalBtn">
+                    <button class="btn btn-primary" type="submit">Submit</button>
+
+                </div>
+            </form>
         </div>
-        <div>
-            <button onclick="addNew()">Add</button>
+
+        <div class="dashboardHeader">
+            <div class="welcome">
+                <h3>Welcome back</h3>
+                <p class="muted">Track and update your job applications here</p>
+            </div>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-value" id="appCount">0</div>
+                    <div class="stat-label">Applications</div>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="listBody">
 
-
-        <div id="listContent">
-
+        <div id="list">
+            <div>
+                <h2>Job Applications</h2>
+            </div>
+            <div>
+                <button class="btn btn-primary" onclick="addNew()">Add</button>
+            </div>
         </div>
+        <div class="listBody">
+            <div id="listContent"></div>
+        </div>
+
     </div>
 
 
@@ -121,12 +559,12 @@
             <h2>Are you Sure?</h2>
             <div id="loadingBar"></div>
             <div class="btnBody">
-                <button onclick="logout()">Confirm</button>
-                <button onclick="cancelLogout()">Cancel</button>
+                <button class="btn btn-primary" onclick="logout()">Confirm</button>
+                <button class="btn btn-secondary" onclick="cancelLogout()">Cancel</button>
             </div>
         </div>
     </div>
-     <div id="loadingBody" style="display: none;">
+    <div id="loadingBody" style="display: none;">
         <div id="loading"></div>
     </div>
     <div id="notif" style="display: none;">

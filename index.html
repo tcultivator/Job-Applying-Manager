@@ -8,244 +8,146 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <title>Job Applying Manager</title>
     <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet'>
+    <style>
+    /* Shared reset & theme */
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg-1:#f5f7ff;--bg-2:#eef2ff;--accent:#6366f1;--accent-2:#7c3aed;--muted:#6b7280;--card:#ffffff;--glass:rgba(255,255,255,0.6)}
+    html,body{height:100%;margin:0;font-family:Inter,'Roboto',system-ui,-apple-system,'Segoe UI',Roboto}
+    body{background:linear-gradient(180deg,var(--bg-1),var(--bg-2));-webkit-font-smoothing:antialiased;color:#0f172a;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;overflow:auto}
+
+    /* Nav & Logo */
+    .landing-header{position:fixed;top:18px;left:50%;transform:translateX(-50%);width:100%;max-width:1200px;padding:0 18px;z-index:20;display:flex;align-items:center}
+    .logo{font-family:'Righteous',sans-serif;font-size:20px;color:var(--accent-2)}
+
+    /* Hero centered container */
+    .hero{width:100%;max-width:1100px;padding:12px;margin:0 auto;display:flex;align-items:center;justify-content:center;min-height:calc(100vh - 160px)}
+    .hero-inner{display:grid;grid-template-columns:1fr;gap:28px;align-items:center;width:100%}
+    .left{padding:24px;border-radius:16px}
+    .left h1{font-size:clamp(1.6rem,6vw,2.6rem);margin:0 0 12px;line-height:1.05}
+    .lead{color:var(--muted);font-size:1rem;margin-bottom:16px}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+    .primary-cta{background:linear-gradient(90deg,var(--accent),#8b5cf6);color:white;border:none;padding:12px 18px;border-radius:12px;font-weight:700;cursor:pointer;box-shadow:0 12px 30px rgba(99,102,241,0.18);transition:transform .18s ease}
+    .primary-cta:hover{transform:translateY(-3px)}
+    .ghost-cta{background:transparent;border:1px solid rgba(15,23,42,0.08);padding:10px 14px;border-radius:12px;cursor:pointer}
+
+    .features{display:flex;gap:18px;margin-top:18px;list-style:none;padding:0;color:var(--muted);flex-wrap:wrap}
+    .features li{display:flex;align-items:center;gap:8px}
+    .features i{color:var(--accent)}
+
+    .right{display:flex;align-items:center;justify-content:center}
+    .showcase{width:320px;background:linear-gradient(180deg,rgba(255,255,255,0.9),white);border-radius:14px;padding:14px;box-shadow:0 12px 30px rgba(2,6,23,0.06)}
+    .show-top{display:flex;gap:8px;padding-bottom:8px}
+    .dot{width:10px;height:10px;border-radius:50%}
+    .mock-list{display:flex;flex-direction:column;gap:8px}
+    .mock-row{display:flex;justify-content:space-between;padding:10px;border-radius:10px;background:#fafafa;border:1px solid #f3f4f6}
+    .pill{font-size:0.85rem;padding:6px 8px;border-radius:999px;background:#f3f4f6;color:var(--muted)}
+    .pill.success{background:linear-gradient(90deg,#f0fdfa,#bbf7d0);color:#065f46}
+    .pill.muted{background:#fff5f5;color:#7f1d1d}
+
+    /* move accent and notif */
+    #move{position:fixed;width:320px;height:320px;background:var(--accent);opacity:0.08;border-radius:40%;transition:1s ease-in-out;z-index:-1;filter:blur(18px);pointer-events:none}
+    #notif{position:fixed;bottom:20px;right:20px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;padding:12px 16px;border-radius:12px;display:flex;align-items:center;gap:10px;z-index:100}
+
+    /* desktop layout */
+    @media(min-width:900px){
+      .hero-inner{grid-template-columns:1fr 380px}
+      .right{display:flex}
+      .hero{min-height:calc(100vh - 160px)}
+    }
+
+    /* mobile-first adjustments */
+    @media (max-width:900px){
+      .hero-inner{grid-template-columns:1fr}
+      .right{display:none}
+      .hero{min-height:auto;padding:20px}
+    }
+
+    @media (max-width:720px){
+      .left{padding:16px}
+      .lead{font-size:0.95rem}
+      .primary-cta{padding:12px}
+      .ghost-cta{padding:10px}
+      .features{flex-direction:column;gap:10px}
+      #move{width:240px;height:240px;filter:blur(14px)}
+    }
+
+    @media (max-width:520px){
+      body{padding:14px}
+      .hero{padding:12px}
+      .left h1{font-size:1.5rem}
+      .cta-row{flex-direction:column}
+      .primary-cta,.ghost-cta{width:100%;display:block;text-align:center}
+      .features{gap:12px}
+      #move{width:180px;height:180px;opacity:0.06}
+    }
+
+    @media (max-width:380px){
+      .left h1{font-size:1.25rem}
+      .lead{font-size:0.9rem}
+      .logo{font-size:18px}
+      #move{width:140px;height:140px}
+    }
+    </style>
 </head>
 
 <body>
-    <div class="head">
-        <h2>Job Application Manager</h2>
-    </div>
-    <div class="bod">
-        <p>Job Application Manager is a simple app designed to help you keep track of your job applications with ease.
-            Easily log each application, update its status as things progress, and stay on top of important dates, all
-            in
-            one organized place. Whether you're applying to a few jobs or many, this app helps you stay focused and in
-            control of your job search.
-            Straightforward. Lightweight. Effective.</p>
-    </div>
-    <div class="foot">
-        <button onclick="window.location.replace('home.html')">Get Started</button>
-    </div>
+    <header class="landing-header">
+        <div class="logo">Job Application Manager</div>
+    </header>
 
-    <div id="move"></div>
+    <main class="hero">
+        <div class="hero-inner">
+            <div class="left">
+                <h1>Organize your job search effortlessly</h1>
+                <p class="lead">Log applications, update statuses, and track follow-ups — all in a single, focused place.
+                </p>
+
+                <div class="cta-row">
+                    <button class="primary-cta" onclick="window.location.replace('home.html')">Get Started</button>
+                    <button class="ghost-cta" onclick="window.location.replace('home.html')">See Demo</button>
+                </div>
+
+                <ul class="features">
+                    <li><i class="fa-solid fa-circle-check"></i> Fast entry</li>
+                    <li><i class="fa-solid fa-clock"></i> Deadline reminders</li>
+                    <li><i class="fa-solid fa-list-check"></i> Simple status updates</li>
+                </ul>
+            </div>
+
+            <div class="right">
+                <div class="showcase">
+                    <div class="show-top">
+                        <div class="dot" style="background: #10b981"></div>
+                        <div class="dot" style="background: #f59e0b"></div>
+                        <div class="dot" style="background: #ef4444"></div>
+                    </div>
+                    <div class="mock-list">
+                        <div class="mock-row"><span>Acme Corp</span><span class="pill">Pending</span></div>
+                        <div class="mock-row"><span>Beta LLC</span><span class="pill success">Interview</span></div>
+                        <div class="mock-row"><span>Gamma Inc</span><span class="pill muted">Rejected</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="move" aria-hidden="true"></div>
 
     <script>
-
         const move = document.getElementById('move')
         setInterval(() => {
-            const left = window.innerWidth - 100
-            const top = window.innerHeight - 100
+            const left = window.innerWidth - 140
+            const top = window.innerHeight - 140
             const randomLeft = Math.random() * left;
             const randomTop = Math.random() * top;
             move.style.left = `${randomLeft}px`;
             move.style.top = `${randomTop}px`;
-
-        }, 1000);
-
+        }, 1100);
     </script>
 
 
 
-    <style>
-        body {
-            padding: 0;
-            margin: 0;
-            font-family: 'Righteous';
-            background-color: #F9F5FF;
-            overflow: hidden;
-            text-align: center;
-            justify-items: center;
-        }
-
-        #move {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            background-color: rgba(0, 0, 0, 0.24);
-            transition: 1s linear;
-            z-index: -1;
-            border-radius: 50%;
-        }
-
-        .head {
-
-            width: 300px;
-            position: absolute;
-            top: 18%;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .bod {
-
-            width: 90%;
-            max-width: 500px;
-            position: absolute;
-            top: 37%;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 14px;
-        }
-
-        .foot {
-            position: absolute;
-            top: 80%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50%;
-
-            max-width: 300px;
-        }
-
-        .foot button {
-            width: 100%;
-            border-radius: 25px;
-            padding: 10px;
-            font-size: 15px;
-            font-weight: bold;
-            font-family: 'Righteous';
-            color: white;
-            background-color: black;
-            border: none;
-        }
-
-        h2 {
-            font-size: 40px;
-        }
-
-        p {
-            font-family: 'Times New Roman', Times, serif;
-            color: rgb(87, 87, 87);
-        }
-
-        @media (min-width:700px) {
-
-            .head {
-
-                width: 500px;
-                position: absolute;
-                top: 18%;
-                left: 50%;
-                transform: translateX(-50%);
-            }
-
-             #move {
-            position: absolute;
-            width: 140px;
-            height: 140px;
-            background-color: rgba(0, 0, 0, 0.24);
-            transition: 1s linear;
-            z-index: -1;
-            border-radius: 50%;
-        }
-
-            .bod {
-
-                width: 90%;
-                max-width: 800px;
-                position: absolute;
-                top: 37%;
-                left: 50%;
-                transform: translateX(-50%);
-                font-size: 20px;
-            }
-
-            .foot {
-                position: absolute;
-                top: 80%;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 70%;
-
-                max-width: 300px;
-            }
-
-            .foot button {
-                width: 100%;
-                border-radius: 30px;
-                padding: 20px;
-                font-size: 18px;
-                font-weight: bold;
-                font-family: 'Righteous';
-                color: white;
-                background-color: black;
-                border: none;
-            }
-
-            h2 {
-                font-size: 60px;
-            }
-
-            p {
-                font-family: 'Times New Roman', Times, serif;
-                color: rgb(87, 87, 87);
-            }
-        }
-
-        @media (min-width:1600px) {
-
-            .head {
-
-                width: 700px;
-                position: absolute;
-                top: 15%;
-                left: 50%;
-                transform: translateX(-50%);
-            }
-
-
-             #move {
-            position: absolute;
-            width: 180px;
-            height: 180px;
-            background-color: rgba(0, 0, 0, 0.24);
-            transition: 1s linear;
-            z-index: -1;
-            border-radius: 50%;
-        }
-
-            .bod {
-
-                width: 90%;
-                max-width: 800px;
-                position: absolute;
-                top: 39%;
-                left: 50%;
-                transform: translateX(-50%);
-                font-size: 23px;
-            }
-
-            .foot {
-                position: absolute;
-                top: 80%;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 70%;
-
-                max-width: 300px;
-            }
-
-            .foot button {
-                width: 100%;
-                border-radius: 30px;
-                padding: 20px;
-                font-size: 18px;
-                font-weight: bold;
-                font-family: 'Righteous';
-                color: white;
-                background-color: black;
-                border: none;
-            }
-
-            h2 {
-                font-size: 80px;
-            }
-
-            p {
-                font-family: 'Times New Roman', Times, serif;
-                color: rgb(87, 87, 87);
-            }
-        }
-    </style>
+    <!-- theme styles moved to index.css -->
 </body>
 
 </html>
