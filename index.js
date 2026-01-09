@@ -56,10 +56,10 @@ function displayJobList() {
     console.log(index)
     newArr.push(`
         <div class="listBodyContent">
-            <div onclick="openUserDetails(${index})" class="listRow">
+            <button onclick="openUserDetails(${index})" class="listRow">
                 <p>${userDatalist[index].CompanyName}</p>
                 <p class="status" data-status="${userDatalist[index].Status}">${userDatalist[index].Status}</p>  
-            </div>
+            </button>
              <div class="rightSide">
                 <button type="button" onclick="del(${index++})">x</button>
             </div>

@@ -62,7 +62,8 @@
             color: var(--accent-2);
             margin: 0
         }
-        #account{
+
+        #account {
             display: flex;
             gap: 5px;
         }
@@ -231,7 +232,7 @@
             box-shadow: 0 12px 30px rgba(2, 6, 23, 0.06);
             display: flex;
             align-items: center;
-            justify-content: space-between;
+
             gap: 10px;
             transition: transform .18s ease
         }
@@ -244,7 +245,9 @@
             display: flex;
             flex-direction: column;
             gap: 6px;
-            cursor: pointer
+            cursor: pointer;
+
+            width: 100%;
         }
 
         .listRow p {
@@ -340,7 +343,7 @@
 
         #userDataList i {
             font-size: 30px;
-            color: var(--accent)
+            
         }
 
         #userDataList .content p {
@@ -356,12 +359,20 @@
 
         .statusContent button,
         .updateControl button {
-            background: var(--accent-2);
+            aspect-ratio: 1/1;
             border: none;
-            color: white;
+            color: var(--accent);
             padding: 8px 10px;
             border-radius: 8px
         }
+
+        .statusContent button:hover,
+        .updateControl button:hover{
+            color: white;
+            background-color: var(--accent);
+        }
+
+        
 
         /* notify & loading */
         #notif {
@@ -433,7 +444,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <title>Job Applying Manager</title>
     <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet'>
-    <!-- theme styles moved to index.css -->
+
 </head>
 
 <body>
@@ -519,33 +530,34 @@
 
 
     <div id="userDataListBody" style="display: none;">
-        <div id="userDataList">
+        <div id="userDataList" style="position: relative; gap: 10px; display: flex; flex-direction: column;">
             <div class="head">
-                <button id="xBtn" onclick="closeModal()">X</button>
-                <i class="fa-solid fa-circle-user"></i>
+
+                <i style="color: var(--accent)" class="fa-solid fa-circle-user"></i>
                 <span id="userCompanyName"></span>
+                <button style="border: none; background-color: transparent; position: absolute; top: 15px; right: 15px; cursor: pointer; padding: 5px;" id="closeBtn" onclick="closeModal()">X</button>
             </div>
-            <div class="content">
+            <div class="content" style="display: flex; flex-direction: column; gap: 10px;">
                 <p>Position : <span id="userPosition"></span></p>
                 <div class="statusContent">
                     <label>Status : <span id="userStatus"></span></label>
-                    <div>
-                        <select id="updateStatus">
+                    <div style=" display: flex; gap: 5px;">
+                        <select id="updateStatus" style="width: 100%;">
                             <option disabled selected>Update</option>
                             <option class="status" data-status="Pending" value="Pending">Pending</option>
                             <option class="status" data-status="Interview" value="Interview">Interview</option>
                             <option class="status" data-status="Reject" value="Reject">Reject</option>
                             <option class="status" data-status="Success" value="Success">Success</option>
                         </select>
-                        <button onclick="updateStatus()"><i class="fa-solid fa-check"></i></button>
+                        <button style=" cursor: pointer;" onclick="updateStatus()"><i class="fa-solid fa-check"></i></button>
                     </div>
 
                 </div>
                 <div class="updateDate">
                     <p>Date : <span id="userDate"></span></p>
-                    <div class="updateControl">
-                        <input type="date" name="" id="updatedDate">
-                        <button onclick="updateDate()"><i class="fa-solid fa-check"></i></button>
+                    <div class="updateControl" style="display: flex; gap: 5px;">
+                        <input style="width: 100%;" type="date" name="" id="updatedDate">
+                        <button style=" cursor: pointer;" onclick="updateDate()"><i class="fa-solid fa-check"></i></button>
                     </div>
 
                 </div>
